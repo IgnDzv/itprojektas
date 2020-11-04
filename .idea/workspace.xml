@@ -135,6 +135,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -152,7 +153,7 @@
       <workItem from="1604483102150" duration="1372000" />
       <workItem from="1604494280954" duration="2050000" />
       <workItem from="1604496490614" duration="29000" />
-      <workItem from="1604498835668" duration="3698000" />
+      <workItem from="1604498835668" duration="10241000" />
     </task>
     <servers />
   </component>
@@ -164,5 +165,9 @@
       <screen x="0" y="0" width="1536" height="768" />
     </state>
     <state x="551" y="142" width="426" height="486" key="FileChooserDialogImpl/0.0.1536.768@0.0.1536.768" timestamp="1604496516513" />
+    <state x="369" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1604514380358">
+      <screen x="0" y="0" width="1384" height="908" />
+    </state>
+    <state x="369" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1384.908@0.0.1384.908" timestamp="1604514380358" />
   </component>
 </project>

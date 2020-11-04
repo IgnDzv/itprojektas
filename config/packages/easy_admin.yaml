@@ -1,6 +1,12 @@
 easy_admin:
     site_name: 'Darbo skelbimų portalas'
+    design:
+        menu:
+            - {entity: Vartotojas, label: "Vartotojai", icon: "user", permission: 'ROLE_ADMIN'}
+            - {entity: Skelbimas, label: "Skelbimai"}
+            - {entity: Zinute, label: "Zinutes", permission: 'ROLE_USER'}
     entities:
         # List the entity class name you want to manage
         - App\Entity\Vartotojas
+        - App\Entity\Skelbimas
         - App\Entity\Zinute
