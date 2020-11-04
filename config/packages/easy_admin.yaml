@@ -4,9 +4,36 @@ easy_admin:
         menu:
             - {entity: Vartotojas, label: "Vartotojai", icon: "user", permission: 'ROLE_ADMIN'}
             - {entity: Skelbimas, label: "Skelbimai"}
-            - {entity: Zinute, label: "Zinutes", permission: 'ROLE_USER'}
     entities:
-        # List the entity class name you want to manage
-        - App\Entity\Vartotojas
-        - App\Entity\Skelbimas
-        - App\Entity\Zinute
+        Skelbimas:
+            class: App\Entity\Skelbimas
+            controller: App\Controller\SkelbimasController
+            list:
+                actions:
+                    - show
+                    - -delete
+                fields:
+                    - id
+                    - pavadinimas
+                    - pridejimo_data
+                    - galiojimo_pab
+            form:
+                fields:
+                    - pavadinimas
+                    - { property: aprasymas, type: textarea }
+                    - galiojimo_pab
+                    - vartotojas
+            show:
+                fields:
+                    - id
+                    - pridejimo_data
+                    - galiojimo_pab
+                    - vartotojas
+                    - pavadinimas
+                    - { property: aprasymas, type: textarea }
+        Vartotojas:
+            class: App\Entity\Vartotojas
+            form:
+                fields:
+                    - slapyvardis
+                    - password

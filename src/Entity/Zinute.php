@@ -27,6 +27,17 @@ class Zinute
      */
     private $data;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Skelbimas::class, inversedBy="zinutes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $skelbimas;
+
+    public function __construct()
+    {
+        $this->data = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +63,18 @@ class Zinute
     public function setData(\DateTimeInterface $data): self
     {
         $this->data = $data;
+
+        return $this;
+    }
+
+    public function getSkelbimas(): ?Skelbimas
+    {
+        return $this->skelbimas;
+    }
+
+    public function setSkelbimas(?Skelbimas $skelbimas): self
+    {
+        $this->skelbimas = $skelbimas;
 
         return $this;
     }

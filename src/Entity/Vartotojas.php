@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VartotojasRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -33,6 +35,16 @@ class Vartotojas implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Skelbimas::class, mappedBy="vartotojas", orphanRemoval=true)
+     */
+    private $skelbimai;
+
+    public function __construct()
+    {
+        $this->skelbimai = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,5 +122,40 @@ class Vartotojas implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Skelbimas[]
+     */
+    public function getSkelbimai(): Collection
+    {
+        return $this->skelbimai;
+    }
+
+    public function addSkelbimai(Skelbimas $skelbimai): self
+    {
+        if (!$this->skelbimai->contains($skelbimai)) {
+            $this->skelbimai[] = $skelbimai;
+            $skelbimai->setVartotojas($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkelbimai(Skelbimas $skelbimai): self
+    {
+        if ($this->skelbimai->removeElement($skelbimai)) {
+            // set the owning side to null (unless already changed)
+            if ($skelbimai->getVartotojas() === $this) {
+                $skelbimai->setVartotojas(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->slapyvardis;
     }
 }
