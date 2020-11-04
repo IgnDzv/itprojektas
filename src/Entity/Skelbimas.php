@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\SkelbimasRepository;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +39,23 @@ class Skelbimas
      * @ORM\Column(type="date")
      */
     private $galiojimo_pab;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Zinute::class, mappedBy="skelbimas", orphanRemoval=true)
+     */
+    private $zinutes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Vartotojas::class, inversedBy="skelbimai")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $vartotojas;
+
+    public function __construct()
+    {
+        $this->pridejimo_data = new DateTime();
+        $this->zinutes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -88,5 +108,52 @@ class Skelbimas
         $this->galiojimo_pab = $galiojimo_pab;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Zinute[]
+     */
+    public function getZinutes(): Collection
+    {
+        return $this->zinutes;
+    }
+
+    public function addZinute(Zinute $zinute): self
+    {
+        if (!$this->zinutes->contains($zinute)) {
+            $this->zinutes[] = $zinute;
+            $zinute->setSkelbimas($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZinute(Zinute $zinute): self
+    {
+        if ($this->zinutes->removeElement($zinute)) {
+            // set the owning side to null (unless already changed)
+            if ($zinute->getSkelbimas() === $this) {
+                $zinute->setSkelbimas(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getVartotojas(): ?Vartotojas
+    {
+        return $this->vartotojas;
+    }
+
+    public function setVartotojas(?Vartotojas $vartotojas): self
+    {
+        $this->vartotojas = $vartotojas;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->pavadinimas;
     }
 }

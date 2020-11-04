@@ -70,7 +70,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         $user = $this->entityManager->getRepository(Vartotojas::class)->findOneBy(['slapyvardis' => $credentials['slapyvardis']]);
 
         if (!$user) {
-            // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Slapyvardis duomenų bazėje nerastas.');
         }
 
@@ -82,9 +81,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
-    /**
-     * Used to upgrade (rehash) the user's password automatically over time.
-     */
     public function getPassword($credentials): ?string
     {
         return $credentials['password'];
@@ -96,8 +92,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
     }
 
     protected function getLoginUrl()
