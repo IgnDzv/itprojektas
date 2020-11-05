@@ -14,18 +14,21 @@ easy_admin:
                     - -delete
                 fields:
                     - id
+                    - tipas
                     - pavadinimas
                     - pridejimo_data
                     - galiojimo_pab
             form:
                 fields:
                     - pavadinimas
-                    - { property: aprasymas, type: textarea }
+                    - {property: tipas, type: choice, type_options: {choices: {'Ieškau':'Ieškau', 'Siūlau':'Siūlau'} } }
+                    - {property: aprasymas, type: textarea}
                     - galiojimo_pab
                     - vartotojas
             show:
                 fields:
                     - id
+                    - tipas
                     - pridejimo_data
                     - galiojimo_pab
                     - {property: vartotojas, type: string}
@@ -37,4 +40,12 @@ easy_admin:
                 fields:
                     - slapyvardis
                     - password
-                    - ar_gali_deti
+                    - {property: ar_gali_deti, type: checkbox, label: "Ar gali dėti skelbimus?"}
+            list:
+                actions:
+                    - edit
+                    - delete
+                fields:
+                    - id
+                    - slapyvardis
+                    - skelbimai

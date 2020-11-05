@@ -51,6 +51,11 @@ class Skelbimas
      */
     private $vartotojas;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tipas;
+
     public function __construct()
     {
         $this->pridejimo_data = new DateTime();
@@ -155,5 +160,17 @@ class Skelbimas
     public function __toString(): string
     {
         return (string) $this->pavadinimas;
+    }
+
+    public function getTipas(): ?string
+    {
+        return $this->tipas;
+    }
+
+    public function setTipas(string $tipas): self
+    {
+        $this->tipas = $tipas;
+
+        return $this;
     }
 }
