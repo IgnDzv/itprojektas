@@ -41,6 +41,11 @@ class Vartotojas implements UserInterface
      */
     private $skelbimai;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $ar_gali_deti;
+
     public function __construct()
     {
         $this->skelbimai = new ArrayCollection();
@@ -157,5 +162,17 @@ class Vartotojas implements UserInterface
     public function __toString(): string
     {
         return $this->slapyvardis;
+    }
+
+    public function getArGaliDeti(): ?bool
+    {
+        return $this->ar_gali_deti;
+    }
+
+    public function setArGaliDeti(bool $ar_gali_deti): self
+    {
+        $this->ar_gali_deti = $ar_gali_deti;
+
+        return $this;
     }
 }

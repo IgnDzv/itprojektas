@@ -28,9 +28,9 @@ easy_admin:
                     - id
                     - pridejimo_data
                     - galiojimo_pab
-                    - vartotojas
+                    - {property: vartotojas, type: string}
                     - pavadinimas
-                    - { property: aprasymas, type: textarea }
+                    - aprasymas
         Vartotojas:
             class: App\Entity\Vartotojas
             form:

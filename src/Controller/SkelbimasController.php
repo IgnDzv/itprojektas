@@ -26,7 +26,7 @@ class SkelbimasController extends EasyAdminController
             return $this->redirectToReferrer();
         }
 
-        return parent::showAction();
+        return parent::editAction();
     }
 
     public function newAction(): Response
@@ -37,6 +37,6 @@ class SkelbimasController extends EasyAdminController
             return $this->redirectToReferrer();
         }
 
-        return parent::showAction();
+        return parent::newAction();
     }
 }
