@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Vartotojas;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
 
 class SkelbimasController extends EasyAdminController
@@ -38,5 +40,27 @@ class SkelbimasController extends EasyAdminController
         }
 
         return parent::newAction();
+    }
+
+    public function createEntityFormBuilder($entity, $view)
+    {
+        $builder = parent::createEntityFormBuilder($entity, $view);
+
+        $options = [
+            'class' => Vartotojas::class,
+            'data' => $this->getUser(),
+        ];
+
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $options = array_merge($options, ['choices' => [$this->getUser()]]);
+        }
+
+        $builder->add(
+            'vartotojas',
+            EntityType::class,
+            $options
+        );
+
+        return $builder;
     }
 }

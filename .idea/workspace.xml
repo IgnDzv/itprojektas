@@ -7,9 +7,7 @@
     <list default="true" id="ad8b73d8-15dc-4eb6-9246-07d4f4acfd23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/easy_admin.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/easy_admin.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Skelbimas.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Skelbimas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SkelbimasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SkelbimasController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <workItem from="1604537900145" duration="6305000" />
       <workItem from="1604561111232" duration="437000" />
       <workItem from="1604561595280" duration="2549000" />
-      <workItem from="1604564624968" duration="349000" />
+      <workItem from="1604564624968" duration="3501000" />
     </task>
     <servers />
   </component>

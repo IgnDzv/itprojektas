@@ -16,24 +16,23 @@ easy_admin:
                     - id
                     - tipas
                     - pavadinimas
-                    - pridejimo_data
-                    - galiojimo_pab
+                    - {property: pridejimo_data, label: "Pridėjimo data"}
+                    - {property: galiojimo_pab, label: "Galioja iki"}
             form:
                 fields:
                     - pavadinimas
                     - {property: tipas, type: choice, type_options: {choices: {'Ieškau':'Ieškau', 'Siūlau':'Siūlau'} } }
                     - {property: aprasymas, type: textarea}
-                    - galiojimo_pab
-                    - vartotojas
+                    - {property: galiojimo_pab, label: "Galioja iki"}
             show:
                 fields:
                     - id
                     - tipas
-                    - pridejimo_data
-                    - galiojimo_pab
+                    - {property: pridejimo_data, label: "Pridėjimo data"}
+                    - {property: galiojimo_pab, label: "Galioja iki"}
                     - {property: vartotojas, type: string}
                     - pavadinimas
-                    - aprasymas
+                    - {property: aprasymas, label: "Aprašymas"}
         Vartotojas:
             class: App\Entity\Vartotojas
             form:
