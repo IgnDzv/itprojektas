@@ -28,10 +28,16 @@ class Zinute
     private $data;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Skelbimas::class, inversedBy="zinutes")
+     * @ORM\ManyToOne(targetEntity=Skelbimas::class, inversedBy="skelbimai")
      * @ORM\JoinColumn(nullable=false)
      */
     private $skelbimas;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Vartotojas::class, inversedBy="zinutes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $vartotojas;
 
     public function __construct()
     {
@@ -75,6 +81,19 @@ class Zinute
     public function setSkelbimas(?Skelbimas $skelbimas): self
     {
         $this->skelbimas = $skelbimas;
+
+        return $this;
+    }
+
+
+    public function getVartotojas(): ?Vartotojas
+    {
+        return $this->vartotojas;
+    }
+
+    public function setVartotojas(?Vartotojas $vartotojas): self
+    {
+        $this->vartotojas = $vartotojas;
 
         return $this;
     }

@@ -42,6 +42,11 @@ class Vartotojas implements UserInterface
     private $skelbimai;
 
     /**
+     * @ORM\OneToMany(targetEntity=Zinute::class, mappedBy="vartotojas", orphanRemoval=true)
+     */
+    private $zinutes;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $ar_gali_deti;
@@ -95,6 +100,11 @@ class Vartotojas implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getRole(): string
+    {
+        return $this->roles[0];
     }
 
     /**
@@ -153,6 +163,36 @@ class Vartotojas implements UserInterface
             // set the owning side to null (unless already changed)
             if ($skelbimai->getVartotojas() === $this) {
                 $skelbimai->setVartotojas(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skelbimas[]
+     */
+    public function getZinutes(): Collection
+    {
+        return $this->zinutes;
+    }
+
+    public function addZinute(Zinute $zinute): self
+    {
+        if (!$this->zinutes->contains($zinute)) {
+            $this->zinutes[] = $zinute;
+            $this->zinutes->setVartotojas($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZinute(Zinute $zinute): self
+    {
+        if ($this->zinutes->removeElement($zinute)) {
+            // set the owning side to null (unless already changed)
+            if ($zinute->getVartotojas() === $this) {
+                $zinute->setVartotojas(null);
             }
         }
 

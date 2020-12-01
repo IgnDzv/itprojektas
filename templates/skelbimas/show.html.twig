@@ -1,0 +1,43 @@
+{% extends '@EasyAdmin/default/show.html.twig' %}
+
+{% block show_fields %}
+    {{ parent() }}
+    <hr>
+    {% if app.user %}
+        {{ form_start(naujasKomentaras) }}
+        <div class="form-horizontal">
+                <div class="form-group">
+                    {{ form_label(naujasKomentaras.naujasKomentaras, {}, {label_attr: {'class': 'control-label'} }) }}
+                    <div class="form-widget">
+                        {{ form_widget(naujasKomentaras.naujasKomentaras, {attr: {'class': 'form-control'}}) }}
+                        {{ form_widget(naujasKomentaras.saugoti, {attr: {'class': 'btn btn-primary mt-2'}}) }}
+                    </div>
+                </div>
+        </div>
+        {{ form_end(naujasKomentaras) }}
+        <hr>
+        <table class="table text-center offset-4 col-sm-4" style="max-width: 40%;">
+            <thead>
+            <tr>
+                <td width="30%">Data</td>
+                <td width="20%">Vartotojas</td>
+                <td>Tekstas</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for zinute in entity.zinutes %}
+                <tr>
+                    <td>{{ zinute.data|date('Y-m-d') }}</td>
+                    <td>{{ zinute.vartotojas }}</td>
+                    <td style="word-break: break-all;">{{ zinute.tekstas }}</td>
+                </tr>
+            {% endfor %}
+            {% if entity.zinutes|length == 0 %}
+            <tr>
+                <td colspan="3">Žinučių nėra.</td>
+            </tr>
+            {% endif %}
+            </tbody>
+    {% endif %}
+    </table>
+{% endblock %}
