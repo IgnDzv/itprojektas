@@ -10,7 +10,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            Jūs esate prisijungę {{ app.user.username }}, <a href="{{ path('app_logout') }}">Atsijungti</a>
+            Jūs esate prisijungę kaip{{ app.user.username }}, <a href="{{ path('app_logout') }}">Atsijungti</a>
         </div>
     {% endif %}
 

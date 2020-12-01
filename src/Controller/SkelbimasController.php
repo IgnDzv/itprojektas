@@ -9,16 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SkelbimasController extends EasyAdminController
 {
-    public function showAction(): Response
-    {
-        if (!$this->getUser()) {
-            $this->addFlash('error', 'Privalote prisijungti!');
-
-            return $this->redirectToReferrer();
-        }
-
-        return parent::showAction();
-    }
+//    public function showAction(): Response
+//    {
+//        if (!$this->getUser()) {
+//            $this->addFlash('error', 'Privalote prisijungti!');
+//
+//            return $this->redirectToReferrer();
+//        }
+//
+//        return parent::showAction();
+//    }
 
     public function editAction(): Response
     {

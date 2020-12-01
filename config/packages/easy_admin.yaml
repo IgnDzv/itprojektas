@@ -25,6 +25,9 @@ easy_admin:
                     - {property: aprasymas, type: textarea}
                     - {property: galiojimo_pab, label: "Galioja iki"}
             show:
+                actions:
+                    - -delete
+                    - -edit
                 fields:
                     - id
                     - tipas
