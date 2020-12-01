@@ -8,10 +8,13 @@ easy_admin:
         Skelbimas:
             class: App\Entity\Skelbimas
             controller: App\Controller\SkelbimasController
+            templates:
+                show: 'skelbimas/show.html.twig'
             list:
                 actions:
-                    - show
-                    - -delete
+                    - { name: 'show', guest_permission: true }
+                    - -deletev
+                    - { name: 'edit', permissions: '[ROLE_USER, ROLE_ADMIN]'}
                 fields:
                     - id
                     - tipas
